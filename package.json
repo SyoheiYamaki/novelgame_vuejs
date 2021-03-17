@@ -7,8 +7,8 @@
     "all": "run-p server watch:css",
     "css:scss": "node-sass src/assets/scss/style.scss -o docs/ --source-map docs/",
     "css:postcss": "postcss docs/style.css -o docs/style.min.css",
-    "watch:css": "watch 'run-s css:scss css:postcss' ./src/assets/scss/*",
-    "server": "browser-sync start --server --files='docs/*.html, docs/*.css, src/assets/js/*.js' --startPath='docs'",
+    "watch:css": "watch 'run-s css:scss css:postcss' ./src/assets/scss",
+    "server": "browser-sync start --server --files='docs/*.html, docs/*.css, src/assets/js/*.js' --startPath='docs/'",
     "test": "echo 'npm run test....'"
   },
   "keywords": [],
@@ -26,7 +26,8 @@
   "dependencies": {
     "postcss": "^8.2.8"
   },
-  "browserslist" : [
-    "last 2 versions", "ie 11"
+  "browserslist": [
+    "last 2 versions",
+    "ie 11"
   ]
 }
