@@ -1,0 +1,124 @@
+.c-comment {
+  display: none;
+  width: 90%;
+  min-height: 220px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  margin: auto;
+  padding: 12px;
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  &.is-show {
+    display: block;
+  }
+  @include mq(mobile) {
+    bottom: 0;
+  }
+}
+.c-comment_name {
+  font-size: 24px;
+  font-weight: bold;
+}
+.c-comment_body {
+  position: relative;
+  width: 100%;
+  min-height: 180px;
+  margin-top: 8px;
+  padding: 12px;
+  background: #4E5550;
+  border-radius: 0px 0px 16px 16px;
+  p {
+    color: #fff;
+    font-size: 24px;
+    @include mq(mobile) {
+      font-size: 20px;
+    }
+  }
+  &:after {
+    content: "▼";
+    position: absolute;
+    right: 24px;
+    bottom: 8px;
+    color: #fff;
+    font-size: 24px;
+    animation: blink 1.2s ease-in-out infinite;
+  }
+}
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+.c-character {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  height: 95%;
+  transition: .6s;
+  &.is-show {
+    opacity: 1;
+    visibility: visible;
+  }
+  @include mq(mobile) {
+    height: 65%;
+    bottom: 190px;
+  }
+}
+.c-question {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: rgba(0, 0, 0, .55);
+  position: relative;
+  padding: 80px 0;
+  z-index: 10;
+  &.is-show {
+    display: flex;
+  }
+}
+.c-question_container {
+  width: 100%;
+}
+.c-question_title {
+  color: #fff;
+  font-size: 28px;
+  font-weight: bold;
+}
+.c-question_answers {
+  margin-top: 40px;
+  li {
+    width: 60%;
+    margin: auto;
+    @include mq(mobile) {
+      width: 80%;
+    }
+    button, a {
+      display: block;
+      text-decoration: none;
+      color: #333;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.8);
+      border: solid 6px #DE5050;
+      border-radius: 8px;
+      font-size: 22px;
+      font-weight: bold;
+      padding: 40px 0;
+    }
+    & + li {
+      margin-top: 32px;
+    }
+  }
+}

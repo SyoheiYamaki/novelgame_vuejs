@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>おしえて！あつやくん２</title>
+  <link rel="stylesheet" href="./style.min.css">
+  <link rel="icon" href="./images/favicon.svg">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+  <script src="./application.js"></script>
+</head>
+<body>
+  <main id="app">
+    <!-- Opening -->
+    <section class="l-opening is-show">
+      <div class="opening-wrap">
+        <img src="./images/logo.png" class="opening-logo">
+        <input type="text" v-model="name" class="opening-input" placeholder="名前を入力してね">
+        <button type="button" class="opening-button" :disabled="!name" @click="goNextScene">スタートする</button>
+      </div>
+    </section>
+    <!-- Prologue -->
+    <section class="l-prologue">
+      <div class="c-comment is-show" @click="goNextPhrase">
+        <p class="c-comment_name">{{ name }}</p>
+        <div class="c-comment_body">
+          <p>私の名前は、{{ name }}！！今日から新しい会社に入社してエンジニアになることになったの！！</p>
+        </div>
+      </div>
+      <div class="c-comment" @click="goNextPhrase">
+        <p class="c-comment_name">{{ name }}</p>
+        <div class="c-comment_body">
+          <p>株式会社PEOPLYTICSっていう会社に入社するんだけど、天気と洋服のサービスとか電話の自動応答サービスとかいろいろやってるみたい！</p>
+        </div>
+      </div>
+      <div class="c-comment" @click="goNextScene">
+        <p class="c-comment_name">{{ name }}</p>
+        <div class="c-comment_body">
+          <p>ここがオフィスかぁ。よし、入ってみようかな</p>
+          <p>ガチャ。。。</p>
+        </div>
+      </div>
+    </section>
+    <!-- Entrance -->
+    <section class="l-entrance">
+      <img src="./images/atsuya.png" class="c-character js-character">
+      <div class="c-comment is-show" @click="goNextPhrase">
+        <p class="c-comment_name">{{ name }}</p>
+        <div class="c-comment_body">
+          <p>コンコン、失礼します〜</p>
+        </div>
+      </div>
+      <div class="c-comment" @click="goNextPhrase">
+        <p class="c-comment_name">？？？</p>
+        <div class="c-comment_body">
+          <p>やあ、こんにちは！はじめまして！！</p>
+        </div>
+      </div>
+      <div class="c-comment" @click="showCharacter">
+        <p class="c-comment_name">{{ name }}</p>
+        <div class="c-comment_body">
+          <p>こ、こんにちは！！！</p>
+          <p>（ｷｭﾝ...男らしくて、とてもかっこいい声、、どんな人だろう、、）</p>
+        </div>
+      </div>
+      <div class="c-comment" @click="goNextPhrase">
+        <p class="c-comment_name">あつやくん</p>
+        <div class="c-comment_body">
+          <p>ようこそ、PEOPLYTICSへ！</p>
+          <p>おれはエンジニアのあつや！よろしくな！</p>
+        </div>
+      </div>
+      <div class="c-comment" @click="goNextPhrase">
+        <p class="c-comment_name">{{ name }}</p>
+        <div class="c-comment_body">
+          <p>よろしくおねがいします！！</p>
+          <p>（あつやくんっていうんだ！！かっこいい、、！！ｷｭﾝ）</p>
+        </div>
+      </div>
+      <div class="c-comment" @click="goQuestion(1)">
+        <p class="c-comment_name">あつやくん</p>
+        <div class="c-comment_body">
+          <p>なんか顔こわばってるで！笑</p>
+          <p>大丈夫か？？緊張してへんか？？？</p>
+        </div>
+      </div>
+      <div class="c-question" data-question-id="1">
+        <div class="c-question_container">
+          <p class="c-question_title">なんてこたえる？？</p>
+          <ul class="c-question_answers">
+            <li><button type="button" @click="answer1(false, $event)">はい、ちょっと緊張しちゃってます、、、</button></li>
+            <li><button type="button" @click="answer1(true, $event)">全く緊張してません！緊張しないタイプなので！！</button></li>
+          </ul>
+        </div>
+      </div>
+      <div v-if="question1" class="c-comment" @click="goQuestion(999)">
+        <p class="c-comment_name">あつやくん</p>
+        <div class="c-comment_body">
+          <p>そういう感じの子、おれ好きちゃうんよな。</p>
+          <p>奥西に伝えて、他のエンジニアの子探すわ。</p>
+        </div>
+      </div>
+      <div v-else class="c-comment" @click="goNextScene">
+        <p class="c-comment_name">あつやくん</p>
+        <div class="c-comment_body">
+          <p>そんな固くならんでええから！笑</p>
+          <p>ほら、中に入りいや！</p>
+        </div>
+      </div>
+      <div class="c-question" data-question-id="999">
+        <div class="c-question_container">
+          <p class="c-question_title">あつやくんに嫌われてしまった！！</p>
+          <ul class="c-question_answers">
+            <li><button type="button" @click="reloadPage">やり直す</button></li>
+          </ul>
+        </div>
+      </div> 
+    </section>
+    <section class="l-workspace">
+      <img src="./images/atsuya.png" class="c-character js-character">
+      <div class="c-comment is-show" @click="showCharacter">
+        <p class="c-comment_name">{{ name }}</p>
+        <div class="c-comment_body">
+          <p>失礼します〜！</p>
+          <p>（すごい、キャンプ道具とか麻雀の卓とか置いてある！！）</p>
+        </div>
+      </div>
+      <div class="c-comment" @click="goNextPhrase">
+        <p class="c-comment_name">あつやくん</p>
+        <div class="c-comment_body">
+          <p>{{ name }}ちゃんのテーブルはここな！</p>
+          <p>奥西〜！{{ name }}ちゃん来たで〜！</p>
+        </div>
+      </div>
+      <div class="c-comment" @click="goNextPhrase">
+        <p class="c-comment_name">あつやくん</p>
+        <div class="c-comment_body">
+          <p>改めて、おれはあつや！よろしくな！！</p>
+        </div>
+      </div>
+      <div class="c-comment" @click="goNextPhrase">
+        <p class="c-comment_name">あつやくん</p>
+        <div class="c-comment_body">
+          <p>突然なんだけど、、、</p>
+        </div>
+      </div>
+      <div class="c-comment" @click="goNextPhrase">
+        <p class="c-comment_name">{{ name }}</p>
+        <div class="c-comment_body">
+          <p>？？？？</p>
+        </div>
+      </div>
+      <div class="c-comment" @click="goNextPhrase">
+        <p class="c-comment_name">あつやくん</p>
+        <div class="c-comment_body">
+          <p>{{ name }}ちゃんの誕生日当ててもええ？？？</p>
+        </div>
+      </div>
+      <div class="c-comment" @click="goNextPhrase">
+        <p class="c-comment_name">{{ name }}</p>
+        <div class="c-comment_body">
+          <p>(本当に突然だ、、！)</p>
+          <p>そんな特技あるんですか！！！当ててみてください！！</p>
+        </div>
+      </div>
+      <div class="c-comment" @click="goNextPhrase">
+        <p class="c-comment_name">あつやくん</p>
+        <div class="c-comment_body">
+          <p>うーーーーーーーーん</p>
+        </div>
+      </div>
+      <div class="c-comment" @click="goQuestion(2)">
+        <p class="c-comment_name">あつやくん</p>
+        <div class="c-comment_body">
+          <p>{{ month }}月や！！！！</p>
+          <p>どや？？？当たったか？？？</p>
+        </div>
+      </div>
+      <div class="c-question" data-question-id="2">
+        <div class="c-question_container">
+          <p class="c-question_title">なんてこたえる？？</p>
+          <ul class="c-question_answers">
+            <li><button type="button" @click="answer2(true, $event)">すごい！！あたりました！！</button></li>
+            <li><button type="button" @click="answer2(false, $event)">え、違います。。。</button></li>
+          </ul>
+        </div>
+      </div>
+      <div v-if="question2" class="c-comment" @click="goQuestion(100)">
+        <p class="c-comment_name">あつやくん</p>
+        <div class="c-comment_body">
+          <p>すごいやろ！！！！これがおれの特技やねん！！！</p>
+          <p>ちなみにそんな誕生日に贈りたい素敵やイヤホンがあるねん！</p>
+          <p>空間そのものが手に入るようなイヤホンなんやで！！</p>
+        </div>
+      </div>
+      <div v-else class="c-comment" @click="goNextPhrase">
+        <p class="c-comment_name">あつやくん</p>
+        <div class="c-comment_body">
+          <p>あ、ほんま？？</p>
+          <p>月はあたらんことあるけど、日は当てれるんやで！！</p>
+        </div>
+      </div>
+      <div class="c-comment" @click="goNextPhrase">
+        <p class="c-comment_name">{{ name }}</p>
+        <div class="c-comment_body">
+          <p>(ほんとうなのかなあ、、、)</p>
+        </div>
+      </div>
+      <div class="c-comment" @click="goNextPhrase">
+        <p class="c-comment_name">あつやくん</p>
+        <div class="c-comment_body">
+          <p>うーーーーーーーーん</p>
+        </div>
+      </div>
+      <div class="c-comment" @click="goQuestion(3)">
+        <p class="c-comment_name">あつやくん</p>
+        <div class="c-comment_body">
+          <p>{{ day }}日や！！！！</p>
+          <p>どやどや？？？当たったか？？？</p>
+        </div>
+      </div>
+      <div class="c-question" data-question-id="3">
+        <div class="c-question_container">
+          <p class="c-question_title">なんてこたえる？？</p>
+          <ul class="c-question_answers">
+            <li><button type="button" @click="answer3(true, $event)">おお！あたりました！！</button></li>
+            <li><button type="button" @click="answer3(false, $event)">え、日にちも違います。。。</button></li>
+          </ul>
+        </div>
+      </div>
+      <div v-if="question3" class="c-comment" @click="goQuestion(100)">
+        <p class="c-comment_name">あつやくん</p>
+        <div class="c-comment_body">
+          <p>ほら！すごいやろ！！！！これがおれの特技やねん！！！</p>
+          <p>そういえば仕事する時に使って欲しいおすすめのイヤホンがあるねんけど！！</p>
+        </div>
+      </div>
+      <div v-else class="c-comment" @click="goQuestion(100)">
+        <p class="c-comment_name">あつやくん</p>
+        <div class="c-comment_body">
+          <p>あ、ほんま？？</p>
+          <p>ちなみにおれ明日誕生日やねん</p>
+          <p>これ欲しいんやけど、買ってくれへん？？？</p>
+        </div>
+      </div>
+      <div class="c-question" data-question-id="100">
+        <div class="c-question_container">
+          <p class="c-question_title">URLが送られてきた(完)</p>
+          <ul class="c-question_answers">
+            <li><a href="https://aftershokz.jp/" target="_blank" rel="noopener noreferrer">URLをひらいてみる</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

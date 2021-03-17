@@ -1,0 +1,32 @@
+{
+  "name": "novelgame_vuejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "all": "run-p server watch:css",
+    "css:scss": "node-sass src/assets/scss/style.scss -o public/ --source-map public/",
+    "css:postcss": "postcss public/style.css -o public/style.min.css",
+    "watch:css": "watch 'run-s css:scss css:postcss' ./src/assets/scss/*",
+    "server": "browser-sync start --server --files='public/*.html, public/*.css, src/assets/js/*.js' --startPath='public'",
+    "test": "echo 'npm run test....'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.2.5",
+    "browser-sync": "^2.26.14",
+    "cssnano": "^4.1.10",
+    "node-sass": "^5.0.0",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^8.3.1",
+    "watch": "^1.0.2"
+  },
+  "dependencies": {
+    "postcss": "^8.2.8"
+  },
+  "browserslist" : [
+    "last 2 versions", "ie 11"
+  ]
+}

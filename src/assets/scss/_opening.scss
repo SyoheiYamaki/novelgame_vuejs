@@ -1,0 +1,50 @@
+.opening-wrap {
+  width: 50%;
+  margin: auto;
+  @include mq(mobile) {
+    width: 90%;
+  }
+}
+.opening-logo {
+  width: 100%;
+  height: auto;
+  margin-top: 80px;
+}
+.opening-input {
+  display: block;
+  width: 80%;
+  height: 64px;
+  background: #fff;
+  border: solid 1px #ccc;
+  border-radius: 8px;
+  font-size: 26px;
+  margin: 40px auto 0;
+  padding: 12px 24px;
+  @include mq(mobile) {
+    width: 100%;
+  }
+}
+.opening-button {
+  display: block;
+  color: #fff;
+  width: 55%;
+  font-size: 34px;
+  font-weight: bold;
+  padding: 12px 0;
+  margin: 40px auto 0;
+  background: #F33E69;
+  border: solid 10px #fff;
+  border-radius: 100px;
+  @include mq(mobile) {
+    width: 100%;
+  }
+}
+// 
+// Prologue
+// 
+.l-prologue {
+  background: #000;
+}
+// 
+// Prologue
+// 
