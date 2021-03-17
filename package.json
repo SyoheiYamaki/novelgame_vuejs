@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "all": "run-p server watch:css",
-    "css:scss": "node-sass src/assets/scss/style.scss -o public/ --source-map public/",
-    "css:postcss": "postcss public/style.css -o public/style.min.css",
+    "css:scss": "node-sass src/assets/scss/style.scss -o docs/ --source-map docs/",
+    "css:postcss": "postcss docs/style.css -o docs/style.min.css",
     "watch:css": "watch 'run-s css:scss css:postcss' ./src/assets/scss/*",
-    "server": "browser-sync start --server --files='public/*.html, public/*.css, src/assets/js/*.js' --startPath='public'",
+    "server": "browser-sync start --server --files='docs/*.html, docs/*.css, src/assets/js/*.js' --startPath='docs'",
     "test": "echo 'npm run test....'"
   },
   "keywords": [],
