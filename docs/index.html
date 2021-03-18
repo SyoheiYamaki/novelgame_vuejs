@@ -36,13 +36,13 @@
       <div class="c-comment is-show" @click="goNextPhrase">
         <p class="c-comment_name">{{ name }}</p>
         <div class="c-comment_body">
-          <p>私の名前は、{{ name }}！！今日から新しい会社に入社してエンジニアになることになったの！！</p>
+          <p>私の名前は、{{ name }}！！今日からエンジニアになることになったの！！</p>
         </div>
       </div>
       <div class="c-comment" @click="goNextPhrase">
         <p class="c-comment_name">{{ name }}</p>
         <div class="c-comment_body">
-          <p>株式会社PEOPLYTICSっていう会社に入社するんだけど、天気と洋服のサービスとか電話の自動応答サービスとかいろいろやってるみたい！</p>
+          <p>株式会社PEOPLYTICS、っていう会社に入社するんだけど、天気と洋服のサービスとか電話の自動応答サービスとかいろいろやってるみたい！</p>
         </div>
       </div>
       <div class="c-comment" @click="goNextScene">
@@ -60,6 +60,7 @@
         <p class="c-comment_name">{{ name }}</p>
         <div class="c-comment_body">
           <p>コンコン、失礼します〜</p>
+          <p>(ドキドキ、、、)</p>
         </div>
       </div>
       <div class="c-comment" @click="goNextPhrase">
@@ -128,6 +129,7 @@
         </div>
       </div> 
     </section>
+    <!-- Workspace -->
     <section class="l-workspace">
       <img src="./images/atsuya.png" class="c-character js-character">
       <div class="c-comment is-show" @click="showCharacter">
@@ -240,11 +242,11 @@
           </ul>
         </div>
       </div>
-      <div v-if="question3" class="c-comment" @click="goQuestion(100)">
+      <div v-if="question3" class="c-comment" @click="goQuestion(101)">
         <p class="c-comment_name">あつやくん</p>
         <div class="c-comment_body">
           <p>ほら！すごいやろ！！！！これがおれの特技やねん！！！</p>
-          <p>そういえば仕事する時に使って欲しいおすすめのイヤホンがあるねんけど！！</p>
+          <p>当てたご褒美におれと大磯に行ってくれへん？？</p>
         </div>
       </div>
       <div v-else class="c-comment" @click="goQuestion(100)">
@@ -257,9 +259,17 @@
       </div>
       <div class="c-question" data-question-id="100">
         <div class="c-question_container">
-          <p class="c-question_title">URLが送られてきた(完)</p>
+          <p class="c-question_title">URLが送られてきた<br>(完)</p>
           <ul class="c-question_answers">
-            <li><a href="https://aftershokz.jp/" target="_blank" rel="noopener noreferrer">URLをひらいてみる</a></li>
+            <li><a href="https://aftershokz.jp/" target="_blank" rel="noopener noreferrer">URLをひらいて新しい世界を手にいれる</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="c-question" data-question-id="101">
+        <div class="c-question_container">
+          <p class="c-question_title">URLが送られてきた<br>(完)</p>
+          <ul class="c-question_answers">
+            <li><a href="https://www.princehotels.co.jp/oiso/" target="_blank" rel="noopener noreferrer">URLをひらいてみる</a></li>
           </ul>
         </div>
       </div>

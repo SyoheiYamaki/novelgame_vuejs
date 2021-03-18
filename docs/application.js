@@ -92,12 +92,14 @@ window.onload = function () {
         this.question2 = value;
         const $question = $(event.currentTarget).parents('.c-question');
         $question.removeClass('is-show');
+        $question.prev('.c-comment').removeClass('is-show');
         $question.next(".c-comment").addClass('is-show');
       },
       answer3 (value, event) {
         this.question3 = value;
         const $question = $(event.currentTarget).parents('.c-question');
         $question.removeClass('is-show');
+        $question.prev('.c-comment').removeClass('is-show');
         $question.next(".c-comment").addClass('is-show');
       },
     }
